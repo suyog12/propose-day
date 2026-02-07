@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Optional: Add a favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+
+    <!-- Background Animation -->
+    <div class="floating-hearts" id="bgHearts"></div>
+    
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- 1. INTRO SCREEN -->
+        <section id="intro" class="active">
+            <h1>Hey love 💕</h1>
+            <p>Before you answer something important…<br>let's see how well you know us.</p>
+            <button class="btn" onclick="startQuiz()">Start the Challenge ❤️</button>
+        </section>
+
+        <!-- 2. QUIZ SECTION -->
+        <section id="quiz">
+            <div class="quiz-card">
+                <div class="progress-container" id="progressHearts">
+                    <!-- Hearts injected via JS -->
+                </div>
+                <div class="question-counter" id="questionCounter">Question 1 of 10</div>
+                
+                <!-- Image Container (for Q1-5) -->
+                <div id="imageContainer" class="hidden">
+                    <img id="qImage" src="" alt="Memory" class="question-image" onclick="this.classList.add('revealed')">
+                    <small style="color:#888; display:block; margin-bottom:10px;">Tap image to reveal</small>
+                </div>
+
+                <h2 id="questionText">Question goes here?</h2>
+                
+                <div class="options-grid" id="optionsGrid">
+                    <!-- Options injected via JS -->
+                </div>
+
+                <div class="feedback-text" id="feedbackText"></div>
+            </div>
+        </section>
+
+        <!-- 3. SCORE REVEAL -->
+        <section id="scoreReveal">
+            <h1>Your Score</h1>
+            <div class="score-number" id="scoreDisplay">0</div>
+            <h2 id="scoreMessage">Calculating...</h2>
+            <button class="btn" onclick="showVideo()" style="margin-top: 20px;">Continue ❤️</button>
+        </section>
+
+        <!-- 4. VIDEO COMPILATION -->
+        <section id="videoSection">
+            <div class="video-wrapper">
+                <!-- 
+                    TODO: Replace the video source below with your own video
+                    Current: assets/videos/romantic.mp4
+                -->
+                <video id="romanticVideo" controls playsinline poster="assets/images/photo1.jpg">
+                    <source src="assets/videos/romantic.mp4" type="video/mp4">
+                    <!-- Fallback message if video doesn't load -->
+                    Your browser does not support the video tag. Please check that assets/videos/romantic.mp4 exists.
+                </video>
+                <div class="video-overlay">
+                    <h3>No matter the score… this is what really matters ❤️</h3>
+                </div>
+            </div>
+            <button class="btn" onclick="showProposal()" style="margin-top: 30px;">Next Step 💍</button>
+        </section>
+
+        <!-- 5. PROPOSAL SCREEN -->
+        <section id="proposal">
+            <h1 class="proposal-title">Will you be my Valentine? 💘</h1>
+            
+            <div class="button-area" id="buttonArea">
+                <div class="tease-msg" id="teaseMsg">Nice try 😌</div>
+                <button class="btn" id="yesBtn" onclick="acceptProposal()">Yes ❤️</button>
+                <button class="btn btn-secondary" id="noBtn">No 🙃</button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 6. FINAL POPUP -->
+    <div class="modal-overlay" id="finalModal">
+        <div class="modal-content">
+            <div class="ring-emoji">💍</div>
+            <h2>Proposal Accepted!</h2>
+            <p>Now and forever, your Valentine ❤️</p>
+            <!-- Optional: Audio element for background music -->
+            <!-- <audio id="proposalMusic" src="audio/our-song.mp3"></audio> -->
+            <button class="btn" onclick="location.reload()">Restart Journey</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
